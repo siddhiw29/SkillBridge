@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Session - SkillBridge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="logo-text">SkillBridge</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="find-tutors.html" class="nav-link">Find Tutors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="subjects.html" class="nav-link">Subjects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-outline" onclick="window.location.href='signin.html'">Sign In</button>
+                <button class="btn btn-primary" onclick="window.location.href='signin.html'">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="booking-container">
+            <div class="booking-header">
+                <a href="find-tutors.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Tutors
+                </a>
+            </div>
+
+            <div class="booking-card">
+                <h1 class="booking-title" id="bookingTitle">Book a Session</h1>
+                
+                <div class="month-navigation">
+                    <button class="month-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span class="month-text">September 2025</span>
+                    <button class="month-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="booking-content">
+                    <div class="date-section">
+                        <h3 class="section-title">Select Date</h3>
+                        <div class="calendar">
+                            <div class="calendar-header">
+                                <div class="day-header">Su</div>
+                                <div class="day-header">Mo</div>
+                                <div class="day-header">Tu</div>
+                                <div class="day-header">We</div>
+                                <div class="day-header">Th</div>
+                                <div class="day-header">Fr</div>
+                                <div class="day-header">Sa</div>
+                            </div>
+                            <div class="calendar-grid">
+                                <div class="calendar-day other-month">31</div>
+                                <div class="calendar-day">1</div>
+                                <div class="calendar-day">2</div>
+                                <div class="calendar-day">3</div>
+                                <div class="calendar-day">4</div>
+                                <div class="calendar-day">5</div>
+                                <div class="calendar-day">6</div>
+                                <div class="calendar-day">7</div>
+                                <div class="calendar-day">8</div>
+                                <div class="calendar-day">9</div>
+                                <div class="calendar-day">10</div>
+                                <div class="calendar-day">11</div>
+                                <div class="calendar-day">12</div>
+                                <div class="calendar-day">13</div>
+                                <div class="calendar-day">14</div>
+                                <div class="calendar-day">15</div>
+                                <div class="calendar-day">16</div>
+                                <div class="calendar-day">17</div>
+                                <div class="calendar-day">18</div>
+                                <div class="calendar-day">19</div>
+                                <div class="calendar-day">20</div>
+                                <div class="calendar-day selected">21</div>
+                                <div class="calendar-day">22</div>
+                                <div class="calendar-day">23</div>
+                                <div class="calendar-day">24</div>
+                                <div class="calendar-day">25</div>
+                                <div class="calendar-day">26</div>
+                                <div class="calendar-day">27</div>
+                            </div>
+                        </div>
+                        <div class="week-view">
+                            <div class="week-day">21</div>
+                            <div class="week-day">22</div>
+                            <div class="week-day">23</div>
+                            <div class="week-day">24</div>
+                            <div class="week-day">25</div>
+                            <div class="week-day">26</div>
+                            <div class="week-day">27</div>
+                        </div>
+                    </div>
+
+                    <div class="times-section">
+                        <h3 class="section-title">Available Times 9/21/2025</h3>
+                        <div class="time-slots">
+                            <div class="time-slot available">09:00</div>
+                            <div class="time-slot unavailable">
+                                <span>10:00</span>
+                                <small>Unavailable</small>
+                            </div>
+                            <div class="time-slot available">11:00</div>
+                            <div class="time-slot available">14:00</div>
+                            <div class="time-slot available">15:00</div>
+                            <div class="time-slot unavailable">
+                                <span>16:00</span>
+                                <small>Unavailable</small>
+                            </div>
+                            <div class="time-slot available">17:00</div>
+                            <div class="time-slot available">18:00</div>
+                            <div class="time-slot available">19:00</div>
+                            <div class="time-slot unavailable">
+                                <span>20:00</span>
+                                <small>Unavailable</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Load selected teacher data
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedTeacher = localStorage.getItem('selectedTeacher');
+            if (selectedTeacher) {
+                const teacherData = JSON.parse(selectedTeacher);
+                document.getElementById('bookingTitle').textContent = `Book a Session with ${teacherData.name}`;
+            }
+        });
+    </script>
+</body>
+</html>

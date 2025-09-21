@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects - SkillBridge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="logo-text">SkillBridge</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="find-tutors.html" class="nav-link">Find Tutors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="subjects.html" class="nav-link active">Subjects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-outline" onclick="window.location.href='signin.html'">Sign In</button>
+                <button class="btn btn-primary" onclick="window.location.href='signin.html'">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subjects Section -->
+    <section class="subjects-section">
+        <div class="container">
+            <div class="subjects-header">
+                <h1 class="subjects-title">Explore Popular Subjects</h1>
+                <p class="subjects-description">
+                    Find expert tutors in over 100 subjects. From academic support to skill development, we have the right tutor for your learning goals.
+                </p>
+            </div>
+
+            <div class="subjects-grid">
+                <div class="subject-card" onclick="window.location.href='find-tutors.html?subject=Mathematics'">
+                    <div class="subject-image">
+                        <div class="subject-icon-small">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                    </div>
+                    <div class="subject-content">
+                        <h3 class="subject-title">Mathematics</h3>
+                        <p class="subject-description">Algebra, Calculus, Geometry & more</p>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="window.location.href='find-tutors.html?subject=Computer Science'">
+                    <div class="subject-image">
+                        <div class="subject-icon-small">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="subject-content">
+                        <h3 class="subject-title">Computer Science</h3>
+                        <p class="subject-description">Programming, Web Dev, Data Science</p>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="window.location.href='find-tutors.html?subject=Languages'">
+                    <div class="subject-image">
+                        <div class="subject-icon-small">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                    </div>
+                    <div class="subject-content">
+                        <h3 class="subject-title">Languages</h3>
+                        <p class="subject-description">English, Spanish, French & more</p>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="window.location.href='find-tutors.html?subject=Sciences'">
+                    <div class="subject-image">
+                        <div class="subject-icon-small">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                    </div>
+                    <div class="subject-content">
+                        <h3 class="subject-title">Sciences</h3>
+                        <p class="subject-description">Physics, Chemistry, Biology</p>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="window.location.href='find-tutors.html?subject=Arts'">
+                    <div class="subject-image">
+                        <div class="subject-icon-large">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="subject-icon-small">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                    </div>
+                    <div class="subject-content">
+                        <h3 class="subject-title">Arts</h3>
+                        <p class="subject-description">Drawing, Painting, Design</p>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="window.location.href='find-tutors.html?subject=Music'">
+                    <div class="subject-image">
+                        <div class="subject-icon-large">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="subject-icon-small">
+                            <i class="fas fa-music"></i>
+                        </div>
+                    </div>
+                    <div class="subject-content">
+                        <h3 class="subject-title">Music</h3>
+                        <p class="subject-description">Piano, Guitar, Vocals</p>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="window.location.href='find-tutors.html?subject=Business'">
+                    <div class="subject-image">
+                        <div class="subject-icon-large">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="subject-icon-small">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                    <div class="subject-content">
+                        <h3 class="subject-title">Business</h3>
+                        <p class="subject-description">Economics, Finance, Marketing</p>
+                    </div>
+                </div>
+
+                <div class="subject-card" onclick="window.location.href='find-tutors.html?subject=Literature'">
+                    <div class="subject-image">
+                        <div class="subject-icon-large">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="subject-icon-small">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                    </div>
+                    <div class="subject-content">
+                        <h3 class="subject-title">Literature</h3>
+                        <p class="subject-description">Writing, Reading, Analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - SkillBridge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="logo-text">SkillBridge</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="find-tutors.html" class="nav-link">Find Tutors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="subjects.html" class="nav-link">Subjects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <div class="user-info">
+                    <i class="fas fa-user-circle user-icon"></i>
+                    <span class="username" id="userName">Student</span>
+                </div>
+                <button class="btn btn-outline btn-signout" onclick="signOut()">Sign Out</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-section">
+        <div class="dashboard-container">
+            <div class="dashboard-main">
+                <!-- Dashboard Overview -->
+                <div class="dashboard-overview">
+                    <div class="overview-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Total Bookings</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="card-number">0</div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Upcoming Sessions</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                        <div class="card-number">0</div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Completed Sessions</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                        <div class="card-number">0</div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-content">
+                            <h3 class="card-title">Member Since</h3>
+                            <div class="card-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="card-number">9/21/2025</div>
+                    </div>
+                </div>
+
+                <!-- Book New Session -->
+                <div class="book-session-card">
+                    <h2 class="card-title">Book a New Session</h2>
+                    <p class="card-description">Find the perfect tutor for your learning needs</p>
+                    
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" placeholder="Search subjects or tutors..." class="search-input">
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="window.location.href='find-tutors.html'">Find All Tutors</button>
+                        <button class="btn btn-outline" onclick="window.location.href='subjects.html'">Browse Subjects</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="dashboard-sidebar">
+                <div class="profile-card">
+                    <h3 class="card-title">Profile Information</h3>
+                    <p class="card-subtitle">Your account details</p>
+                    
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>siddhiw2912@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <span>siddhiw2912@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Role</span>
+                            <span class="info-value">Student</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-outline btn-full">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Load user data
+        document.addEventListener('DOMContentLoaded', function() {
+            const userName = localStorage.getItem('userName') || 'Student';
+            const userEmail = localStorage.getItem('userEmail') || '';
+            
+            document.getElementById('userName').textContent = userName;
+        });
+
+        // Sign out function
+        function signOut() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

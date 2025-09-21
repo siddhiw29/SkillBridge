@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Tutors - SkillBridge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="logo-text">SkillBridge</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="find-tutors.html" class="nav-link active">Find Tutors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="subjects.html" class="nav-link">Subjects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-outline" onclick="window.location.href='signin.html'">Sign In</button>
+                <button class="btn btn-primary" onclick="window.location.href='signin.html'">Get Started</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Find Tutors Section -->
+    <section class="find-tutors-section">
+        <div class="container">
+            <div class="search-header">
+                <h2 class="search-title" id="searchTitle">Showing all tutors</h2>
+                
+                <div class="search-filters">
+                    <div class="search-bar">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search by name, subject, or skills..." class="search-input" id="searchInput">
+                    </div>
+                    
+                    <div class="filter-dropdown" id="subjectFilter">
+                        <span class="filter-text">All Subjects</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    
+                    <button class="clear-filter-btn" onclick="clearFilters()">Clear Filter</button>
+                </div>
+            </div>
+
+            <!-- Tutors Grid -->
+            <div class="tutors-grid" id="tutorsGrid">
+                <!-- Mathematics Teachers -->
+                <div class="tutor-card" data-subject="Mathematics">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/4285F4/FFFFFF?text=PS" alt="Dr. Priya Sharma" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Dr. Priya Sharma</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (127)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Mathematics</div>
+                        
+                        <p class="tutor-description">
+                            Experienced mathematics tutor specializing in calculus and algebra. I help students build confidence and achieve their academic goals.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">Calculus</span>
+                            <span class="tag">Algebra</span>
+                            <span class="tag">Statistics</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>8+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>127 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Bengali</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('priya-sharma')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('priya-sharma')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutor-card" data-subject="Mathematics">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/34A853/FFFFFF?text=RS" alt="Rajesh Singh" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Rajesh Singh</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8 (95)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Mathematics</div>
+                        
+                        <p class="tutor-description">
+                            Passionate about making math fun and accessible. Specializes in geometry, trigonometry, and competitive mathematics.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">Geometry</span>
+                            <span class="tag">Trigonometry</span>
+                            <span class="tag">Competitive Math</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>6+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>95 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Punjabi</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('rajesh-singh')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('rajesh-singh')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Computer Science Teachers -->
+                <div class="tutor-card" data-subject="Computer Science">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/EA4335/FFFFFF?text=AK" alt="Arjun Kumar" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Arjun Kumar</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (156)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Computer Science</div>
+                        
+                        <p class="tutor-description">
+                            Software engineer with 10+ years experience. Expert in Python, Java, and web development. Makes coding concepts easy to understand.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">Web Development</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>156 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Tamil</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('arjun-kumar')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('arjun-kumar')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutor-card" data-subject="Computer Science">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/FBBC04/FFFFFF?text=SP" alt="Sneha Patel" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Sneha Patel</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7 (89)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Computer Science</div>
+                        
+                        <p class="tutor-description">
+                            Data scientist and AI enthusiast. Specializes in machine learning, data analysis, and algorithm design. Patient and encouraging teacher.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Data Science</span>
+                            <span class="tag">Algorithms</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>5+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>89 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Gujarati</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('sneha-patel')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('sneha-patel')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages Teachers -->
+                <div class="tutor-card" data-subject="Languages">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/8B5CF6/FFFFFF?text=MG" alt="Meera Gupta" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Meera Gupta</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8 (112)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Languages</div>
+                        
+                        <p class="tutor-description">
+                            English literature professor with expertise in creative writing, grammar, and communication skills. Helps students excel in language arts.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">English Literature</span>
+                            <span class="tag">Creative Writing</span>
+                            <span class="tag">Grammar</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>12+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>112 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Sanskrit</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('meera-gupta')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('meera-gupta')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutor-card" data-subject="Languages">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/06B6D4/FFFFFF?text=VR" alt="Vikram Reddy" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Vikram Reddy</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.6 (78)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Languages</div>
+                        
+                        <p class="tutor-description">
+                            Multilingual instructor specializing in Spanish, French, and Hindi. Makes language learning interactive and enjoyable.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">Spanish</span>
+                            <span class="tag">French</span>
+                            <span class="tag">Hindi</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>7+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>78 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Telugu, Spanish, French</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('vikram-reddy')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('vikram-reddy')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sciences Teachers -->
+                <div class="tutor-card" data-subject="Sciences">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/EF4444/FFFFFF?text=DK" alt="Dr. Deepak Kumar" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Dr. Deepak Kumar</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (134)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Sciences</div>
+                        
+                        <p class="tutor-description">
+                            Physics professor with expertise in mechanics, thermodynamics, and quantum physics. Makes complex concepts simple and understandable.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">Physics</span>
+                            <span class="tag">Mechanics</span>
+                            <span class="tag">Thermodynamics</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>15+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>134 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Bengali</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('deepak-kumar')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('deepak-kumar')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutor-card" data-subject="Sciences">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/10B981/FFFFFF?text=AS" alt="Anita Sharma" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Anita Sharma</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7 (98)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Sciences</div>
+                        
+                        <p class="tutor-description">
+                            Chemistry expert specializing in organic chemistry, biochemistry, and laboratory techniques. Patient teacher with practical approach.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">Chemistry</span>
+                            <span class="tag">Organic Chemistry</span>
+                            <span class="tag">Biochemistry</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>9+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>98 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Punjabi</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('anita-sharma')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('anita-sharma')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arts Teachers -->
+                <div class="tutor-card" data-subject="Arts">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/F59E0B/FFFFFF?text=RM" alt="Ravi Mehta" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Ravi Mehta</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8 (67)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Arts</div>
+                        
+                        <p class="tutor-description">
+                            Professional artist and art instructor. Specializes in drawing, painting, and digital art. Encourages creativity and self-expression.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">Drawing</span>
+                            <span class="tag">Painting</span>
+                            <span class="tag">Digital Art</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>8+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>67 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Gujarati</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('ravi-mehta')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('ravi-mehta')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Music Teachers -->
+                <div class="tutor-card" data-subject="Music">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/EC4899/FFFFFF?text=SK" alt="Sunita Kumar" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Sunita Kumar</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9 (89)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Music</div>
+                        
+                        <p class="tutor-description">
+                            Classical music teacher specializing in Indian classical music, piano, and vocal training. Patient and encouraging instructor.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">Classical Music</span>
+                            <span class="tag">Piano</span>
+                            <span class="tag">Vocals</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>11+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>89 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Tamil</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('sunita-kumar')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('sunita-kumar')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Teachers -->
+                <div class="tutor-card" data-subject="Business">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/6366F1/FFFFFF?text=AJ" alt="Amit Jain" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Amit Jain</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8 (76)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Business</div>
+                        
+                        <p class="tutor-description">
+                            Business consultant and MBA graduate. Specializes in economics, finance, and marketing strategies. Real-world experience in corporate world.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">Economics</span>
+                            <span class="tag">Finance</span>
+                            <span class="tag">Marketing</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>6+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>76 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Marathi</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('amit-jain')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('amit-jain')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Literature Teachers -->
+                <div class="tutor-card" data-subject="Literature">
+                    <div class="tutor-image">
+                        <img src="https://via.placeholder.com/120x120/14B8A6/FFFFFF?text=NM" alt="Nisha Mehta" class="profile-img">
+                        <div class="online-indicator"></div>
+                    </div>
+                    
+                    <div class="tutor-info">
+                        <div class="tutor-header">
+                            <h3 class="tutor-name">Nisha Mehta</h3>
+                            <div class="tutor-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7 (92)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-specialization">Literature</div>
+                        
+                        <p class="tutor-description">
+                            Literature professor specializing in world literature, poetry analysis, and creative writing. Inspires students to love reading and writing.
+                        </p>
+                        
+                        <div class="tutor-tags">
+                            <span class="tag">World Literature</span>
+                            <span class="tag">Poetry</span>
+                            <span class="tag">Creative Writing</span>
+                        </div>
+                        
+                        <div class="tutor-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10+ years</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-users"></i>
+                                <span>92 students</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-video"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tutor-languages">
+                            <span>Speaks: English, Hindi, Gujarati</span>
+                        </div>
+                        
+                        <div class="tutor-availability">
+                            <span class="availability-text">Available today</span>
+                        </div>
+                        
+                        <div class="tutor-actions">
+                            <button class="btn btn-outline" onclick="viewProfile('nisha-mehta')">View Profile</button>
+                            <button class="btn btn-primary" onclick="bookSession('nisha-mehta')">Book Session</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Handle URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subject = urlParams.get('subject');
+            const search = urlParams.get('search');
+            
+            if (subject) {
+                document.querySelector('.filter-text').textContent = subject;
+                filterTutorsBySubject(subject);
+            }
+            
+            if (search) {
+                document.getElementById('searchInput').value = search;
+                performTutorSearch(search);
+            }
+        });
+    </script>
+</body>
+</html>
