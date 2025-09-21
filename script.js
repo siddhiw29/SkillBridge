@@ -55,6 +55,22 @@ function initSignIn() {
     if (userTypeButtons.length === 0) {
         return;
     }
+  async function signUpUser(email, password, userType = 'student') {
+  const { data, error } = await supabaseClient.auth.signUp({ email, password });
+  if (error) { showNotification(error.message, 'error'); return; }
+  // store userType in localStorage (or better: store in profiles table)
+  localStorage.setItem('userType', userType);
+  showNotification('Account created — check your email to verify.', 'success');
+}
+
+async function signOutUser() {
+  const { error } = await supabaseClient.auth.signOut();
+  if (error) { showNotification(error.message, 'error'); return; }
+  localStorage.removeItem('userType');
+  showNotification('Signed out', 'info');
+  window.location.href = 'signin.html';
+}
+
 
     // User type toggle
     userTypeButtons.forEach(button => {
@@ -862,6 +878,7 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 
 });
+
 
 
 
