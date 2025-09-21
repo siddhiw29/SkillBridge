@@ -105,7 +105,42 @@ function initSignIn() {
             }
             
             // Simulate login
-            showNotification(`Signing in as ${userType}...`, 'info');
+           // --- Real Supabase sign-in ---
+(async () => {
+  try {
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      showNotification(error.message, 'error');
+      return;
+    }
+
+    // Success
+    showNotification(`Signed in as ${userType}`, 'success');
+
+    // Keep user-type locally (Supabase user metadata or a profiles table is better for production)
+    localStorage.setItem('userType', userType);
+    localStorage.setItem('userEmail', email);
+    localStorage.setItem('userName', email.split('@')[0]);
+
+    // Redirect to the right dashboard
+    setTimeout(() => {
+      if (userType === 'student') {
+        window.location.href = 'dashboard.html';
+      } else {
+        window.location.href = 'tutor-dashboard.html';
+      }
+    }, 800);
+
+  } catch (err) {
+    showNotification('Unexpected error: ' + (err.message || err), 'error');
+    console.error(err);
+  }
+})();
+
             
             // Store user type in localStorage
             localStorage.setItem('userType', userType);
@@ -756,4 +791,5 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 
 });
+
 
