@@ -758,6 +758,31 @@ function checkAuth() {
 }
 
 // Check authentication on page load (with delay to allow page to load)
+async function checkAuth() {
+  // Get session from Supabase
+  const { data: { session }, error: sessionError } = await supabaseClient.auth.getSession();
+
+  const userType = localStorage.getItem('userType');
+  const currentPage = window.location.pathname.split('/').pop().split('.')[0];
+
+  // Not logged in
+  if (!session) {
+    if (['dashboard', 'tutor-dashboard', 'book-session', 'find-tutors'].includes(currentPage)) {
+      // Protected pages - redirect to sign in
+      window.location.href = 'signin.html';
+    }
+    return;
+  }
+
+  // Logged in & on sign in page -> redirect to dashboard
+  if (currentPage === 'signin') {
+    if (userType === 'student') {
+      window.location.href = 'dashboard.html';
+    } else if (userType === 'tutor') {
+      window.location.href = 'tutor-dashboard.html';
+    }
+  }
+}
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(checkAuth, 100);
 });
@@ -791,5 +816,6 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 
 });
+
 
 
