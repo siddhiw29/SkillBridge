@@ -1,6 +1,6 @@
 // === Supabase Initialization ===
 const SUPABASE_URL = "https://cdpiathucrzyakrqtuiz.supabase.co";
-const SUPABASE_ANON_KEY = "PASTE_YOUR_ANON_KEY_HERE"; // keep your anon key here
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkcGlhdGh1Y3J6eWFrcnF0dWl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgzNzc5MDQsImV4cCI6MjA3Mzk1MzkwNH0.6CPu5mX4R0sRkywZvNSVEvVnAIqhH9elkcb5SIa1GVc"; // keep your anon key here
 // create client (use a distinct name to avoid shadowing)
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -878,6 +878,7 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 
 });
+
 
 
 
