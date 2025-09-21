@@ -1,3 +1,8 @@
+// === Supabase Initialization ===
+const SUPABASE_URL = "https://cdpiathucrzyakrqtuiz.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNkcGlhdGh1Y3J6eWFrcnF0dWl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgzNzc5MDQsImV4cCI6MjA3Mzk1MzkwNH0.6CPu5mX4R0sRkywZvNSVEvVnAIqhH9elkcb5SIa1GVc"; 
+
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 // SkillBridge Website JavaScript
 document.addEventListener('DOMContentLoaded', function() {
     console.log('SkillBridge website loaded successfully!');
@@ -743,4 +748,5 @@ document.querySelectorAll('.btn').forEach(button => {
             }, 2000);
         }
     });
+
 });
