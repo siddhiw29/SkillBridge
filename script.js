@@ -241,14 +241,60 @@ function updateAvailableTimes(dayNumber) {
 }
 
 // Show booking confirmation
-function showBookingConfirmation(time) {
-    const selectedDate = document.querySelector('.calendar-day.selected').textContent;
-    
-    showNotification(`Session booked for September ${selectedDate} at ${time}!`, 'success');
-    
+async function showBookingConfirmation(time) {
+  const selectedDateElem = document.querySelector('.calendar-day.selected');
+  if (!selectedDateElem) {
+    showNotification('Please select a date', 'error');
+    return;
+  }
+  const selectedDate = selectedDateElem.textContent.trim();
+
+  // Basic success notification
+  showNotification(`Booking in progress for ${selectedDate} at ${time}...`, 'info');
+
+  // Get current user
+  const { data: { user }, error: userErr } = await supabaseClient.auth.getUser();
+  if (userErr || !user) {
+    showNotification('Please sign in to book session', 'error');
+    window.location.href = 'signin.html';
+    return;
+  }
+
+  const student_id = user.id;
+  const selectedTeacher = JSON.parse(localStorage.getItem('selectedTeacher') || '{}');
+  const tutor_id = selectedTeacher.id || null;
+  const subject = selectedTeacher.specialization || selectedTeacher.speciality || 'General';
+
+  // NOTE: build a proper ISO datetime from the selected date + time later.
+  const scheduled_at = new Date().toISOString();
+
+  try {
+    const { data, error } = await supabaseClient
+      .from('meetings')
+      .insert([{
+        student_id,
+        tutor_id,
+        subject,
+        scheduled_at
+      }]);
+
+    if (error) {
+      console.error(error);
+      showNotification('Booking failed: ' + error.message, 'error');
+      return;
+    }
+
+    showNotification('Session booked successfully!', 'success');
+
+    // go to dashboard after booking
     setTimeout(() => {
-        window.location.href = 'dashboard.html';
-    }, 2000);
+      window.location.href = 'dashboard.html';
+    }, 1200);
+
+  } catch (err) {
+    console.error(err);
+    showNotification('Unexpected error during booking', 'error');
+  }
 }
 
 // Dashboard functionality
@@ -816,6 +862,7 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 
 });
+
 
 
 
