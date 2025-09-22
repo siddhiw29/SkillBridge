@@ -263,6 +263,7 @@ async function showBookingConfirmation(time) {
     showNotification('Please select a date', 'error');
     return;
   }
+  
   const selectedDate = selectedDateElem.textContent.trim();
 
   // Basic success notification
@@ -298,7 +299,9 @@ async function showBookingConfirmation(time) {
       console.error(error);
       showNotification('Booking failed: ' + error.message, 'error');
       return;
-    }
+    }else{
+  console.log("Booking success:", data);
+  }
 
     showNotification('Session booked successfully!', 'success');
 
@@ -878,6 +881,7 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 
 });
+
 
 
 
