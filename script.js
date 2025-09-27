@@ -272,10 +272,7 @@ async function showBookingConfirmation(time) {
 
   console.log("Booking attempt:", { studentId, tutorId, selectedDate, time });
 
-  if (!studentId || !tutorId) {
-    showNotification("Student or Tutor ID missing!", "error");
-    return;
-  }
+  
 
   // Insert booking into Supabase
   const { data, error } = await supabase
@@ -870,6 +867,7 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 
 });
+
 
 
 
