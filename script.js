@@ -257,64 +257,56 @@ function updateAvailableTimes(dayNumber) {
 }
 
 // Show booking confirmation
+// Show booking confirmation & save to Supabase
 async function showBookingConfirmation(time) {
   const selectedDateElem = document.querySelector('.calendar-day.selected');
   if (!selectedDateElem) {
     showNotification('Please select a date', 'error');
     return;
   }
-  
+
   const selectedDate = selectedDateElem.textContent.trim();
 
-  // Basic success notification
-  showNotification(`Booking in progress for ${selectedDate} at ${time}...`, 'info');
+  // Assume you stored logged-in user info in localStorage
+  const studentId = localStorage.getItem("studentId");
+  const tutorId = localStorage.getItem("selectedTutorId"); // you must set this when tutor is chosen
 
-  // Get current user
-  const { data: { user }, error: userErr } = await supabaseClient.auth.getUser();
-  if (userErr || !user) {
-    showNotification('Please sign in to book session', 'error');
-    window.location.href = 'signin.html';
+  // Insert booking into Supabase
+  const { data, error } = await supabase
+    .from("bookings")
+    .insert([
+      {
+        student_id: studentId,
+        tutor_id: tutorId,
+        date: selectedDate,
+        time: time,
+        status: "upcoming"
+      }
+    ]);
+
+  if (error) {
+    console.error("Error booking session:", error.message);
+    showNotification("Failed to book session. Please try again.", "error");
     return;
   }
 
-  const student_id = user.id;
-  const selectedTeacher = JSON.parse(localStorage.getItem('selectedTeacher') || '{}');
-  const tutor_id = selectedTeacher.id || null;
-  const subject = selectedTeacher.specialization || selectedTeacher.speciality || 'General';
+  // Success message
+  showNotification(`Booking confirmed for ${selectedDate} at ${time}`, "success");
 
-  // NOTE: build a proper ISO datetime from the selected date + time later.
-  const scheduled_at = new Date().toISOString();
-
-  try {
-    const { data, error } = await supabaseClient
-      .from('meetings')
-      .insert([{
-        student_id,
-        tutor_id,
-        subject,
-        scheduled_at
-      }]);
-
-    if (error) {
-      console.error(error);
-      showNotification('Booking failed: ' + error.message, 'error');
-      return;
-    }else{
-  console.log("Booking success:", data);
-  }
-
-    showNotification('Session booked successfully!', 'success');
-
-    // go to dashboard after booking
-    setTimeout(() => {
-      window.location.href = 'dashboard.html';
-    }, 1200);
-
-  } catch (err) {
-    console.error(err);
-    showNotification('Unexpected error during booking', 'error');
-  }
+  // Update dashboards
+  updateStudentDashboard(studentId);
+  updateTutorDashboard(tutorId);
 }
+// Subscribe to real-time booking updates
+supabase
+  .from("bookings")
+  .on("INSERT", (payload) => {
+    console.log("New booking inserted:", payload.new);
+    updateStudentDashboard(payload.new.student_id);
+    updateTutorDashboard(payload.new.tutor_id);
+  })
+  .subscribe();
+
 
 // Dashboard functionality
 function initDashboard() {
@@ -881,6 +873,7 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 
 });
+
 
 
 
