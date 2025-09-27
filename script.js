@@ -256,7 +256,6 @@ function updateAvailableTimes(dayNumber) {
     }
 }
 
-// Show booking confirmation
 // Show booking confirmation & save to Supabase
 async function showBookingConfirmation(time) {
   const selectedDateElem = document.querySelector('.calendar-day.selected');
@@ -267,9 +266,16 @@ async function showBookingConfirmation(time) {
 
   const selectedDate = selectedDateElem.textContent.trim();
 
-  // Assume you stored logged-in user info in localStorage
+  // Get user info
   const studentId = localStorage.getItem("studentId");
-  const tutorId = localStorage.getItem("selectedTutorId"); // you must set this when tutor is chosen
+  const tutorId = localStorage.getItem("selectedTutorId");
+
+  console.log("Booking attempt:", { studentId, tutorId, selectedDate, time });
+
+  if (!studentId || !tutorId) {
+    showNotification("Student or Tutor ID missing!", "error");
+    return;
+  }
 
   // Insert booking into Supabase
   const { data, error } = await supabase
@@ -285,27 +291,18 @@ async function showBookingConfirmation(time) {
     ]);
 
   if (error) {
-    console.error("Error booking session:", error.message);
-    showNotification("Failed to book session. Please try again.", "error");
+    console.error("Supabase insert error:", error);
+    showNotification("Failed to book session: " + error.message, "error");
     return;
   }
 
-  // Success message
+  console.log("Booking successful:", data);
   showNotification(`Booking confirmed for ${selectedDate} at ${time}`, "success");
 
   // Update dashboards
   updateStudentDashboard(studentId);
   updateTutorDashboard(tutorId);
 }
-// Subscribe to real-time booking updates
-supabase
-  .from("bookings")
-  .on("INSERT", (payload) => {
-    console.log("New booking inserted:", payload.new);
-    updateStudentDashboard(payload.new.student_id);
-    updateTutorDashboard(payload.new.tutor_id);
-  })
-  .subscribe();
 
 
 // Dashboard functionality
@@ -873,6 +870,7 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 
 });
+
 
 
 
